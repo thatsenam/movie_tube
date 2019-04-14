@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home">
+
+    </item>
+    <item
+        android:id="@+id/trending"
+        android:icon="@drawable/ic_trending_up_black_24dp"
+        android:title="Trending">
+
+    </item><item
+        android:id="@+id/upload"
+        android:icon="@drawable/ic_cloud_upload_black_24dp"
+        android:title="Upload">
+
+    </item>
+    <item
+        android:id="@+id/stackoverflow"
+        android:icon="@drawable/ic_stackoverflow_black_24dp"
+        android:title="StackOverflow">
+
+    </item>
+    <item
+        android:id="@+id/library"
+        android:icon="@drawable/ic_library_black_24dp"
+        android:title="Library">
+
+    </item>
+</menu>

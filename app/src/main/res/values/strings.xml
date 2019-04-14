@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MovieTube</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Movie Page</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda nemo neque possimus rem tempore? Ab, dolorum, praesentium. Aliquid beatae, blanditiis eligendi et ipsum quas rerum sint velit veritatis voluptate, voluptatem?</string>
+    <string name="movie_thumbnail">Movie Thumbnail</string>
+    <string name="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit</string>
+</resources>
