@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="appbarLayoutHeight">50dp</dimen>
+    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="bottomsheet_elevation">16dp</dimen>
+    <dimen name="activity_horizontal_margin">5dp</dimen>
 </resources>

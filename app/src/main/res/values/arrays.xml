@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_by">
+        <item>Most Recent</item>
+        <item>Up Voted</item>
+    </string-array>
+    <string-array name="MoreItem">
+        <item>Report</item>
+        <item>Quality</item>
+        <item>Captions</item>
+        <item>Playback speed</item>
+        <item>Help &amp; Feedback</item>
+
+    </string-array>
+</resources>

@@ -13,14 +13,14 @@
 
     </item><item
         android:id="@+id/upload"
-        android:icon="@drawable/ic_cloud_upload_black_24dp"
-        android:title="Upload">
+        android:icon="@drawable/ic_live_tv_black_24dp"
+        android:title="Live">
 
     </item>
     <item
         android:id="@+id/stackoverflow"
         android:icon="@drawable/ic_stackoverflow_black_24dp"
-        android:title="StackOverflow">
+        android:title="Q/A">
 
     </item>
     <item

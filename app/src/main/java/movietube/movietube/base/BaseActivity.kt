@@ -1,19 +1,12 @@
 package movietube.movietube.base
 
+
 import android.content.Context
-import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseActivity<in V : BaseView, T : BasePresenter<V>> : AppCompatActivity(), BaseView {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
-    protected abstract var mPresenter: T
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        mPresenter.attachView(this as V)
-    }
 
     override fun getContext(): Context = this
 
@@ -39,6 +32,6 @@ abstract class BaseActivity<in V : BaseView, T : BasePresenter<V>> : AppCompatAc
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter.detachView()
+
     }
 }

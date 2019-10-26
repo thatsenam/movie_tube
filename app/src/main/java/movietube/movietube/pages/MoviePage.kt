@@ -1,18 +1,25 @@
 package movietube.movietube.pages
 
+
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.OrientationHelper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.movie_page.view.*
+import movietube.movietube.Listeners
 import movietube.movietube.R
 import movietube.movietube.adapters.MovieAdapter
-import movietube.movietube.adapters.MovieClickListener
 import movietube.movietube.home.MainActivity
+import movietube.movietube.model.Model
+import movietube.movietube.listeners.Listener
 import movietube.movietube.listeners.OnFragmentInteraction
 import movietube.movietube.pojo.Movie
 
@@ -20,11 +27,11 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class MoviePage : Fragment() {
-    // TODO: Rename and change types of parameters
+
+
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteraction? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,39 +40,90 @@ class MoviePage : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        var model = Model(container!!.context)
+        val mc = inflater.inflate(R.layout.movie_page, container, false)
+        var swipeRefreshLayout = mc.findViewById<SwipeRefreshLayout>(R.id.swipe)
+        var layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+        var lmProgress = mc.findViewById<ProgressBar>(R.id.load_more_progress)
+        var progress = mc.findViewById<ProgressBar>(R.id.progress_bar)
 
-        val moviePageContainer = inflater.inflate(R.layout.movie_page, container, false)
-        val movieList: ArrayList<Movie> = ArrayList()
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        movieList.add(Movie("Foo bar", "", 2.2f, true, ""))
-        moviePageContainer.movieRecyclerView.adapter = MovieAdapter(movieList, object : MovieClickListener {
+
+        var movieAdapter = MovieAdapter(mutableListOf(), object : Listeners.MovieClickListener {
             override fun onMovieClick(item: View, position: Int, targetMovie: Movie) {
                 var home = context as MainActivity
-                home.playVideo(Movie("Foo bar", "", 2.2f, true, ""))
-                home.suggestedMovie(movieList)
+                home.playVideo(targetMovie, targetMovie.Links?.get(0)!!)
+            }
+
+        }, MainActivity.activity)
+        var endlessScrollListener = object :
+            EndlessRecyclerViewScrollListener(layoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                //  Toast.makeText(context, "Load More", Toast.LENGTH_SHORT).show()
+                lmProgress.visibility = View.VISIBLE
+
+                model.getMovies(page, object : Listener<List<Movie>>() {
+                    override fun onSuccess(response: List<Movie>) {
+                        lmProgress.visibility = View.GONE
+                        movieAdapter.addMovie(response.toMutableList())
+                    }
+
+                    override fun onError(error: String) {
+                        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+                        lmProgress.visibility = View.GONE
+                    }
+                })
+
 
             }
 
+
+        }
+        mc.movieRecyclerView.addOnScrollListener(endlessScrollListener)
+        mc.movieRecyclerView.layoutManager = layoutManager
+        mc.movieRecyclerView.adapter = movieAdapter
+        mc.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
+        model.getMovies(0, object : Listener<List<Movie>>() {
+            override fun onSuccess(response: List<Movie>) {
+                swipeRefreshLayout.isRefreshing = false
+                progress.visibility = View.GONE
+                movieAdapter.addMovie(response.toMutableList())
+            }
+
+            override fun onError(error: String) {
+                swipeRefreshLayout.isRefreshing = false
+                Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+                progress.visibility = View.GONE
+            }
         })
-        moviePageContainer.movieRecyclerView.layoutManager = LinearLayoutManager(context, OrientationHelper.VERTICAL, false)
-        return moviePageContainer
+        swipeRefreshLayout.setOnRefreshListener {
+            mc.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
+            mc.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
+            model.getMovies(0, object : Listener<List<Movie>>() {
+                override fun onSuccess(response: List<Movie>) {
+                    swipeRefreshLayout.isRefreshing = false
+                    progress.visibility = View.GONE
+                    movieAdapter.clear()
+                    movieAdapter.addMovie(response.toMutableList())
+                    Log.w("w", "response : ${response.size}")
+                    endlessScrollListener.resetState()
+                }
+
+                override fun onError(error: String) {
+                    swipeRefreshLayout.isRefreshing = false
+                    Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+                    progress.visibility = View.GONE
+
+                }
+            })
+
+
+        }
+
+        return mc
     }
 
 
@@ -111,11 +169,11 @@ class MoviePage : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-                MoviePage().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+            MoviePage().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
+            }
     }
 }

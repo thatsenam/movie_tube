@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+
+    <carbon.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/carbon_white_70"
+            app:carbon_elevation="5dp"
+            android:layout_marginBottom="10dp"
+    >
+        <carbon.widget.ImageView
+                android:id="@+id/qa_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_close_black_24dp"
+                app:carbon_rippleHotspot="true"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="true"
+                app:carbon_rippleColor="@color/colorCloseGray"/>
+    </carbon.widget.LinearLayout>
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+    >
+
+        <carbon.widget.FrameLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp"
+                android:clickable="true"
+                android:background="@color/colorWhite"
+                app:carbon_elevation="2dp"
+                app:carbon_cornerRadius="5dp"
+                app:carbon_rippleStyle="background"
+                android:paddingStart="16dp"
+                android:focusable="true"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingEnd="16dp">
+
+
+            <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:id="@+id/bodyContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                      android:paddingBottom="30dp"
+                        android:visibility="visible">
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                app:civ_circle_background_color="@color/colorBlack"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="6dp"
+                                android:src="@drawable/ic_incognito"/>
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                            <carbon.widget.TextView
+                                    android:id="@+id/pop_stack_type"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="r/Movie Request"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="12sp"
+                            />
+
+                            <carbon.widget.TextView
+                                    android:id="@+id/pop_stack_info"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="u/anonynmous • 4 minutes ago "
+                                    android:textSize="10sp"
+                                    android:paddingRight="5dp"
+                                    android:gravity="center"
+                                    android:paddingEnd="5dp"
+
+
+                            />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <carbon.widget.TextView
+                            android:id="@+id/pop_stack_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="user question or request title shows here"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="@color/colorBlack"
+                    />
+                    <carbon.widget.TextView
+                            android:id="@+id/pop_stack_body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/lorem_ipsum"
+                            android:maxLines="2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="5dp"
+
+                    />
+
+                    <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_gravity="center"
+                    >
+
+                        <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1"
+
+
+                        >
+                            <ImageView
+                                    android:id="@+id/popupvoteBtn"
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_up_black"
+                                    android:layout_gravity="center"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"/>
+                            <TextView
+                                    android:id="@+id/popvoteTV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Vote"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:gravity="center"
+
+                            />
+                            <ImageView android:id="@+id/popdownVoteBtn"
+                                       android:layout_width="16dp"
+                                       android:layout_height="16dp"
+                                       android:src="@drawable/ic_down_black"
+                                       android:layout_gravity="center"
+
+
+                            />
+                        </LinearLayout>
+                        <carbon.widget.LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:gravity="center"
+                                android:layout_weight="1"
+                        >
+                            <carbon.widget.ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_mode_comment_black_24dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginEnd="5dp"
+
+                            />
+
+                            <carbon.widget.TextView
+                                    android:id="@+id/pop_stack_comments"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Comment"
+
+
+                            />
+                        </carbon.widget.LinearLayout>
+                        <carbon.widget.LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:gravity="center"
+                                android:layout_weight="1"
+                        >
+                            <carbon.widget.ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_spam_black_24dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginEnd="5dp"/>
+
+                            <carbon.widget.TextView
+                                    android:id="@+id/pop_stack_report"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Spam"
+
+                                    android:layout_gravity="center"
+                            />
+                        </carbon.widget.LinearLayout>
+
+
+                    </carbon.widget.LinearLayout>
+
+                </LinearLayout>
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/comment_swipe"
+                        android:layout_width="match_parent"
+                        android:minHeight="400dp"
+                        android:layout_height="match_parent">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="20dp"
+                    >
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/commentRV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                        />
+                        <TextView
+                                android:id="@+id/qa_no_comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No Comments Yet."
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:fontFamily="sans-serif-thin"
+                                android:visibility="visible"/>
+
+                    </LinearLayout>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            </LinearLayout>
+        </carbon.widget.FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+    <carbon.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:carbon_strokeWidth="1dp"
+            app:carbon_stroke="#EEE7E7E7"
+            android:layout_margin="10dp"
+            android:background="#EEE7E7E7"
+            android:layout_gravity="bottom">
+
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="add comment"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"/>
+        <carbon.widget.ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_send_black_24dp"
+                android:layout_gravity="center"
+                app:carbon_rippleHotspot="true"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="2dp"
+
+        />
+    </carbon.widget.LinearLayout>
+    <carbon.widget.LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E2E1E1"
+            app:layout_anchor="@id/bodyContainer"
+            app:layout_anchorGravity="bottom"
+            android:padding="10dp"
+
+    >
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Best Comments"
+        android:fontFamily="sans-serif-thin"/>
+    </carbon.widget.LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

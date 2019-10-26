@@ -1,1 +1,1 @@
-include ':app',':jiaozivideoplayer',':giraffeplayer2'
+include ':app'

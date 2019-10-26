@@ -1,7 +1,6 @@
 package movietube.movietube.base
 
-interface BasePresenter<in V : BaseView> {
-    fun attachView(view: V)
-
-    fun detachView()
+interface BasePresenter {
+    fun enqueue()
+    fun viewClicked(view: android.view.View)
 }

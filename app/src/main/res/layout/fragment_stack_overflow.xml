@@ -1,16 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:context=".pages.StackOverflow">
 
-    tools:context=".pages.StackOverflow">
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="StackOverflow" />
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+        >
 
-</FrameLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical"
+                          android:layout_gravity="end"
+                          android:layout_margin="10dp">
+
+                <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        app:carbon_cornerRadius="5dp"
+                        android:layout_gravity="center"
+                        app:carbon_stroke="@color/colorGrey"
+                        android:background="@color/colorWhite"
+                        app:carbon_rippleColor="@color/rippelColor"
+                        app:carbon_rippleStyle="over"
+                        app:carbon_strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_live_help_black_24dp"/>
+                    <carbon.widget.TextView
+                            android:id="@+id/ask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ask Question"
+                            app:carbon_rippleColor="@color/rippelColor"
+                            android:textAllCaps="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+
+                    />
+                </carbon.widget.LinearLayout>
+                <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        app:carbon_cornerRadius="5dp"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@color/colorRed"
+                        app:carbon_rippleStyle="over"
+                        app:carbon_strokeWidth="1dp"
+                        app:carbon_rippleColor="@color/rippelColor"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_request_white_24dp"/>
+                    <carbon.widget.TextView
+                            android:id="@+id/request"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Request Movie"
+                            android:textColor="@color/colorWhite"
+
+                            android:textAllCaps="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"/>
+                </carbon.widget.LinearLayout>
+
+
+            </LinearLayout>
+
+            <carbon.widget.LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="end"
+                    app:carbon_cornerRadius="5dp"
+                    app:carbon_stroke="@color/colorGrey"
+                    app:carbon_strokeWidth="1dp"
+
+            >
+                <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/sort_by"
+                        android:dropDownWidth="match_parent"
+                        android:padding="5dp"
+
+                />
+            </carbon.widget.LinearLayout>
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:background="@color/colorGrey"
+                  android:layout_marginTop="5dp"
+            />
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/stack_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                <ProgressBar
+                        android:id="@+id/stack_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/ProgressTheme"
+                        android:visibility="gone"
+                        android:layout_gravity="center"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

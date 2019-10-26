@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carbon.widget.FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:clickable="true"
+        android:background="@color/colorWhite"
+        app:carbon_elevation="2dp"
+        app:carbon_cornerRadius="5dp"
+        app:carbon_rippleStyle="background"
+        android:paddingStart="16dp"
+        android:focusable="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:civ_circle_background_color="@color/colorBlack"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="6dp"
+                        android:src="@drawable/ic_incognito"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <carbon.widget.TextView
+                            android:id="@+id/stack_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="r/Movie Request"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp"
+                    />
+
+                    <carbon.widget.TextView
+                            android:id="@+id/stack_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="u/anonynmous • 4 minutes ago "
+                            android:textSize="10sp"
+                            android:paddingRight="5dp"
+                            android:gravity="center"
+                            android:paddingEnd="5dp"
+
+
+                    />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <carbon.widget.TextView
+                    android:id="@+id/stack_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="user question or request title shows here"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/colorBlack"
+            />
+            <carbon.widget.TextView
+                    android:id="@+id/stack_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum"
+                    android:maxLines="2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+
+            />
+
+            <carbon.widget.LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center"
+            >
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+
+
+                >
+                    <ImageView
+                            android:id="@+id/upvoteBtn"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_up_black"
+                            android:layout_gravity="center"
+                     android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"/>
+                    <TextView
+                            android:id="@+id/voteTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Vote"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+
+                    />
+                    <ImageView android:id="@+id/downVoteBtn"
+                               android:layout_width="16dp"
+                               android:layout_height="16dp"
+                               android:src="@drawable/ic_down_black"
+                               android:layout_gravity="center"
+
+
+                    />
+                </LinearLayout>
+                <carbon.widget.LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center"
+                        android:layout_weight="1"
+                >
+                    <carbon.widget.ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_mode_comment_black_24dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"
+
+                    />
+
+                    <carbon.widget.TextView
+                            android:id="@+id/stack_comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Comment"
+
+
+                    />
+                </carbon.widget.LinearLayout>
+                <carbon.widget.LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center"
+                        android:layout_weight="1"
+                >
+                    <carbon.widget.ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_spam_black_24dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"/>
+
+                    <carbon.widget.TextView
+                            android:id="@+id/stack_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Spam"
+
+                            android:layout_gravity="center"
+                    />
+                </carbon.widget.LinearLayout>
+
+
+            </carbon.widget.LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</carbon.widget.FrameLayout>

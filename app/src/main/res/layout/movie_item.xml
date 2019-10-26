@@ -1,59 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorWhite">
-
-    <ImageView
-        android:id="@+id/movieThumb"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:contentDescription="@string/movie_thumbnail"
-        android:scaleType="fitXY"
-        android:src="@color/colorGrey" />
-
-    <LinearLayout
+<carbon.widget.RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/movieThumb"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        app:carbon_rippleStyle="borderless"
+        android:background="@color/colorWhite"
+        app:carbon_rippleColor="@color/rippelColor"
+>
+    <FrameLayout
+            android:id="@+id/thumb_container"
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="4dp"
-            android:src="@color/colorGrey" />
+        <ImageView
+                android:id="@+id/movieThumb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/movie_thumbnail"
+                android:scaleType="fitXY"
+                android:src="@color/colorGrey"/>
 
-        <LinearLayout
+        <TextView
+                android:id="@+id/movie_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01:20:15"
+                android:padding="2dp"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorBlack"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="6dp"
+        />
+
+    </FrameLayout>
+    <SeekBar
+            android:id="@+id/movie_seen_progress"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_gravity="bottom"
+            android:layout_below="@id/thumb_container"
+            android:background="@null"
+            android:thumb="@null"
+            android:progress="20"
+            android:max="100"
+            android:layout_margin="0dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:clickable="false"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+
+
+    />
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/thumb_container"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/movieChannelThum"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:src="@color/colorGrey"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1" android:layout_marginLeft="3dp">
 
             <TextView
-                android:id="@+id/movieTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
+                    android:id="@+id/movieTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:textColor="@color/colorBlack"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textSize="16sp"/>
 
             <TextView
-                android:id="@+id/movieChannel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lorem Ipsum . 100k views . 6 days ago"
-                android:textSize="12sp" />
+                    android:id="@+id/movieChannel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum . 100k views . 6 days ago"
+                    android:textSize="12sp"/>
         </LinearLayout>
+        <carbon.widget.LinearLayout
+                android:id="@+id/movie_options"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:carbon_rippleStyle="borderless"
+                android:focusable="true"
+                android:clickable="true"
+        >
+            <ImageView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:src="@drawable/ic_more_vert_black_24dp"
+
+            />
+        </carbon.widget.LinearLayout>
 
     </LinearLayout>
 
 
-</RelativeLayout>
+</carbon.widget.RelativeLayout>

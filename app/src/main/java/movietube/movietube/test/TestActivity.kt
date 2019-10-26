@@ -1,18 +1,21 @@
 package movietube.movietube.test
 
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_test.*
-import movietube.movietube.Listener
 import movietube.movietube.R
+import movietube.movietube.listeners.Listener
+
 
 class TestActivity : AppCompatActivity() {
 
